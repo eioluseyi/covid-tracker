@@ -1,97 +1,35 @@
 import "./App.css";
-import { Line } from "react-chartjs-2";
-import ChartGeo from "chartjs-chart-geo";
+import { createContext, useState } from "react";
+import { Infections, Vaccinations } from "./components";
 
-const DataSelector = ({ title = "", value = "" }) => {
-	return <button>{title}</button>;
-};
-
-const CardHeader = ({ title = "", selectors = [] }) => {
-	return (
-		<div className="card__header">
-			<div className="title">{title}</div>
-			<div className="selectors">
-				{selectors.map((sel, i) => (
-					<DataSelector key={i} title={sel.title} value={sel.value} />
-				))}
-			</div>
-		</div>
-	);
-};
-
-const Graph = graphInfo => {
-	const data = {
-		labels: ["1", "2", "3", "4", "5", "6"],
-		datasets: [
-			{
-				label: "# of Votes",
-				data: [12, 19, 3, 5, 2, 3],
-				fill: false,
-				backgroundColor: "rgb(255, 99, 132)",
-				borderColor: "rgba(255, 99, 132, 0.2)"
-			}
-		]
-	};
-
-	const options = {
-		scales: {
-			yAxes: [
-				{
-					ticks: {
-						beginAtZero: true
-					}
-				}
-			]
-		}
-	};
-
-	return (
-		<div className="graph">
-			<Line data={data} options={options} />
-		</div>
-	);
-};
-
-const Card = ({ title = "", selectors = [], graphInfo = {} }) => {
-	return (
-		<div className="card">
-			<CardHeader title={title} selectors={selectors} />
-			<Graph graphInfo={graphInfo} />
-		</div>
-	);
-};
-
-const Infections = () => {
-	return (
-		<Card
-			title="Infections"
-			selectors={[
-				{ title: "TODAY", value: "1" },
-				{ title: "1 MONTH", value: "2" },
-				{ title: "1 YEAR", value: "3" }
-			]}
-		/>
-	);
-};
-
-const Vaccinations = () => {
-	return <div>Vaccinations</div>;
-};
+export const DataContext = createContext();
 
 function App() {
-	const country_list = [{ name: "Nigeria" }];
+	const country_list = [
+		{ label: "Nigeria", value: "ng" },
+		{ label: "USA", value: "us" }
+	];
+	const [country, setCountry] = useState("ng");
+
 	return (
-		<div className="App">
-			<div className="countries">
-				<select>
-					{country_list.map(cl => (
-						<option>{cl.name}</option>
-					))}
-				</select>
+		<DataContext.Provider value={country}>
+			<div className="App">
+				<div className="countries">
+					<select value={country} onChange={e => setCountry(e.target.value)}>
+						<option value="" disabled>
+							- Choose Country -
+						</option>
+						{country_list.map(cl => (
+							<option key={cl.value} value={cl.value}>
+								{cl.label}
+							</option>
+						))}
+					</select>
+				</div>
+				<Infections />
+				<Vaccinations />
 			</div>
-			<Infections />
-			<Vaccinations />
-		</div>
+		</DataContext.Provider>
 	);
 }
 
