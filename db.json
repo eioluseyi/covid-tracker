@@ -2,9 +2,12 @@
 	"countries": [
 		{
 			"id": "ng",
-			"infections": [
+			"infections": [{ "id": "1" }, { "id": "2" }, { "id": "3" }],
+			"vaccinations": [{ "id": "1" }, { "id": "2" }],
+			"data": [
 				{
-					"id": "1",
+					"id": "11",
+					"infectionId": "1",
 					"00:00": 3,
 					"03:00": 6,
 					"06:00": 7,
@@ -15,14 +18,16 @@
 					"21:00": 17
 				},
 				{
-					"id": "2",
+					"id": "12",
+					"infectionId": "2",
 					"Week 1": 219,
 					"Week 2": 439,
 					"Week 3": 497,
 					"Week 4": 519
 				},
 				{
-					"id": "3",
+					"id": "13",
+					"infectionId": "3",
 					"November 2020": 909,
 					"December 2020": 1278,
 					"January 2021": 2103,
@@ -35,10 +40,10 @@
 					"August 2021": 19109,
 					"September 2021": 20240,
 					"October": 23709
-				}
-			],
-			"vaccinations": {
-				"1": {
+				},
+				{
+					"id": "14",
+					"vaccinationId": "1",
 					"November 2020": 90,
 					"December 2020": 127,
 					"January 2021": 210,
@@ -52,7 +57,9 @@
 					"September 2021": 2040,
 					"October": 2370
 				},
-				"2": {
+				{
+					"id": "15",
+					"vaccinationId": "2",
 					"November 2020": 120,
 					"December 2020": 197,
 					"January 2021": 270,
@@ -66,7 +73,7 @@
 					"September 2021": 2540,
 					"October": 2770
 				}
-			}
+			]
 		},
 		{
 			"id": "us",
