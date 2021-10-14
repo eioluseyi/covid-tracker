@@ -1,0 +1,58 @@
+body {
+	background-color: #efefef;
+}
+
+.App {
+	max-width: 600px;
+	padding: 60px 30px;
+	margin: auto;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+}
+
+.countries {
+	padding-bottom: 30px;
+}
+
+.countries select {
+	width: 100%;
+	font-size: 18px;
+	font-weight: 600;
+	padding: 10px;
+}
+
+.card {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-bottom: 60px;
+	background-color: #fff;
+}
+
+.card__header {
+	background-color: #ccc;
+	display: flex;
+	padding: 30px;
+}
+
+.card__header .title {
+	font-size: 18px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.card__header .selectors {
+	margin: 0 0 0 auto;
+}
+
+.card__header .selectors button {
+	margin: 0 15px;
+}
+
+.card__header .selectors button:last-child {
+	margin-right: 0;
+}
+
+.graph {
+	padding: 30px;
+}
